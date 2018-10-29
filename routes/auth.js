@@ -1,4 +1,6 @@
-const _ = require('lodash');
+const joi = require('joi');
+const config = require('config');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { User } = require('../models/user');
 const express = require('express');
@@ -19,7 +21,9 @@ router.post('/', async (req, res) => {
     if (!isValid)
         return res.status(400).send('Invalid email or password.');
     
-    res.send(true);
+    const token = user.generateAuthToken();
+
+    res.send(token);
 });
 
 function validate(req) {
