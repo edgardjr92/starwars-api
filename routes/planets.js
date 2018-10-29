@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
+    throw new Error('Test error');
     const planets = await Planet.find().sort('name');
     res.send(planets);
 });
