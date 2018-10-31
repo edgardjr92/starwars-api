@@ -19,7 +19,12 @@ router.post('/', auth, async (req, res) => {
     const { error } = validate(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
-    let planet = new Planet({
+    
+    let planet = await Planet.findOne({ name:req.body.name })
+
+    if (planet)
+        return res.status(400).send('Planet already registered.');
+    planet = new Planet({
         name: req.body.name,
         climate: req.body.climate,
         terrain: req.body.terrain

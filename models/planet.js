@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const Planet = mongoose.model('planet', new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     climate: {
         type: String,
