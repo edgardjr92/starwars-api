@@ -1,8 +1,10 @@
 const logger = require('../utils/logger');
 const mongoose = require('mongoose');
+const config = require('config');
 
 module.exports = function() {
-    mongoose.connect('mongodb://localhost/starwars', { useNewUrlParser: true })
-        .then(() => logger.log('info', 'Connected with MongoDB...'))
+    const db = config.get('db');
+    mongoose.connect(db, { useNewUrlParser: true })
+        .then(() => logger.log('info', `Connected to ${db}...`))
         .catch((err) => logger.log('error', 'Coulkd not connect to MongoDB...'));
 }

@@ -1,5 +1,5 @@
+const validateObjectId = require('./../middleware/validateObjectId');
 const _ = require('lodash');
-const auth = require('../middleware/auth');
 const { Planet, validate } = require('../models/planet');
 const express = require('express');
 const router = express.Router();
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     res.send(planets);
 });
 
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
     const { error } = validate(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
@@ -33,15 +33,17 @@ router.post('/', auth, async (req, res) => {
     res.send(planet);
 });
 
-router.get('/:id', auth, async (req, res) => {
+router.get('/:id', validateObjectId, async (req, res) => {
     let planet = await Planet.findById(req.params.id).lean();
+
     if (!planet)
         res.status(404).send(`Planet not found ID: ${req.params.id}`);
+
     planet.numberFilms = await swapi.getQuantityMovies(planet.name);
     res.send(_.pick(planet, ['_id', 'name', 'climate', 'terrain', 'numberFilms']));
 });
 
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', validateObjectId,async (req, res) => {
     const planet = await Planet.findByIdAndRemove(req.params.id);
     if (!planet)
         return res.status(404).send(`Planet not found ID: ${req.params.id}`);
