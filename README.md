@@ -4,7 +4,7 @@
 
 * **URL**
 
-  /planets/
+  /planets/ <br />
   /planets/?name=[name]
 
 * **Method:**
@@ -14,18 +14,11 @@
 *  **URL Params**
   `name=[string]`
 
-   **Required:**
- 
-  None
-
-* **Data Params**
-
-  None
-
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `[{ _id : ˜5bd917bb9672ef14abb151fa˜, name : "Dagobah",  terrain: "swamp, jungles", climate: "murky", numberFilms: 3}]`
+    **Content:** <br />
+    `[{ _id : ˜5bd917bb9672ef14abb151fa˜, name : "Dagobah",  terrain: "swamp, jungles", climate: "murky", numberFilms: 3}]`
 
 **Get Planet**
 ----
@@ -45,19 +38,17 @@
  
    `id=[string]`
 
-* **Data Params**
-
-  None
-
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ _id : ˜5bd917bb9672ef14abb151fa˜, name : "Dagobah",  terrain: "swamp, jungles", climate: "murky", numberFilms: 3}`
+    **Content:**  <br /> 
+    `{ _id : ˜5bd917bb9672ef14abb151fa˜, name : "Dagobah",  terrain: "swamp, jungles", climate: "murky", numberFilms: 3}`
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `Planet not found ID: <id>`
+    **Content:** <br />
+    `Planet not found ID: <id>`
 
 **Post Planet**
 ----
@@ -78,19 +69,22 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ _id : ˜5bd917bb9672ef14abb151fa˜, name : "Dagobah",  terrain: "swamp, jungles", climate: "murky", numberFilms: 3}`
+    **Content:** <br />
+    `{ _id : ˜5bd917bb9672ef14abb151fa˜, name : "Dagobah",  terrain: "swamp, jungles", climate: "murky", numberFilms: 3}`
  
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `Planet already registered.`
+    **Content:** <br />
+    `Planet already registered.`
 
   OR
 
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `"[field]" is required`
+    **Content:** <br />
+    `"[field]" is required`
 
 **Delete Planet**
 ----
@@ -110,16 +104,14 @@
  
    `id=[string]`
 
-* **Data Params**
-
-  None
-
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ _id : ˜5bd917bb9672ef14abb151fa˜, name : "Dagobah",  terrain: "swamp, jungles", climate: "murky", numberFilms: 3}`
+    **Content:** <br />
+    `{ _id : ˜5bd917bb9672ef14abb151fa˜, name : "Dagobah",  terrain: "swamp, jungles", climate: "murky", numberFilms: 3}`
  
 * **Error Response:**
 
  * **Code:** 404 NOT FOUND <br />
-    **Content:** `Planet not found ID: <id>`
+    **Content:** <br />
+    `Planet not found ID: <id>`
